@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ck.dao.UserDao">
+
+	<sql id="col">id,name,pwd,gender,year</sql>
+
+	<select id="login" parameterType="User" resultType="Integer">
+		SELECT
+		id
+		FROM
+		user
+		WHERE
+		name = #{name}
+		AND pwd = #{pwd}
+	</select>
+
+	<select id="select" parameterType="User" resultType="User">
+		SELECT
+		<include refid="col" />
+		FROM
+		user
+		<where>
+			<if test="name != null and name != ''">
+				<bind name="name1" value="'%'+ name +'%'" />
+				and name like #{name1}
+			</if>
+			<if test="pwd != null and pwd != ''">
+				<bind name="pwd1" value="'%'+ pwd +'%'" />
+				and pwd like #{pwd1}
+			</if>
+			<if test="gender != null">
+				and gender = #{gender}
+			</if>
+			<if test="year != null">
+				and year = #{year}
+			</if>
+		</where>
+	</select>
+
+	<select id="selectById" parameterType="Integer" resultType="User">
+		SELECT
+		<include refid="col" />
+		FROM
+		user
+		WHERE
+		id = #{id}
+	</select>
+
+	<insert id="insert" parameterType="User" keyProperty="id"
+		useGeneratedKeys="true">
+		INSERT user(name, pwd, gender, year)
+		VALUES
+		(#{name},#{pwd},#{gender},#{year})
+	</insert>
+
+	<update id="update" parameterType="User">
+		UPDATE user
+		<set>
+			<if test="name != null and name != ''">
+				name=#{name},
+			</if>
+			<if test="pwd != null and pwd != ''">
+				pwd=#{pwd},
+			</if>
+			<if test="gender != null">
+				gender=#{gender},
+			</if>
+			<if test="year != null">
+				year=#{year}
+			</if>
+		</set>
+		WHERE
+		id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="Integer">
+		DELETE
+		FROM
+		user
+		WHERE
+		id =
+		#{id}
+	</delete>
+
+</mapper>

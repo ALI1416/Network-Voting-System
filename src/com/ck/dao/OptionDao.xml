@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ck.dao.OptionDao">
+
+	<sql id="col">id,post_id AS postId,option_text AS optionText,option_num
+		AS optionNum,option_state AS optionState
+	</sql>
+
+	<select id="select" parameterType="Option" resultType="Option">
+		SELECT
+		<include refid="col" />
+		FROM
+		poll_option
+		<where>
+			<if test="postId != null">
+				and post_id = #{postId}
+			</if>
+			<if test="optionText != null and optionText != ''">
+				<bind name="optionText1" value="'%'+ optionText +'%'" />
+				and option_text like #{optionText1}
+			</if>
+			<if test="optionNum != null">
+				and option_num = #{optionNum}
+			</if>
+			<if test="optionState != null">
+				and option_state = #{optionState}
+			</if>
+		</where>
+	</select>
+
+	<select id="selectByPostId" parameterType="Integer" resultType="Option">
+		SELECT
+		<include refid="col" />
+		FROM
+		poll_option
+		WHERE
+		post_id = #{postId}
+	</select>
+
+	<select id="selectById" parameterType="Integer" resultType="Option">
+		SELECT
+		<include refid="col" />
+		FROM
+		poll_option
+		WHERE
+		id = #{id}
+	</select>
+
+	<insert id="insert" parameterType="Option" keyProperty="id"
+		useGeneratedKeys="true">
+		INSERT poll_option (
+		post_id,
+		option_text,
+		option_num,
+		option_state
+		)VALUES(#{postId},#{optionText},#{optionNum},#{optionState})
+	</insert>
+
+	<delete id="delete" parameterType="Integer">
+		DELETE
+		FROM
+		poll_option
+		WHERE
+		id =
+		#{id}
+	</delete>
+
+	<update id="update" parameterType="Option">
+		UPDATE poll_option
+		<set>
+			<if test="optionText != null and optionText != ''">
+				option_text=#{optionText},
+			</if>
+			<if test="optionNum != null">
+				option_num=#{optionNum},
+			</if>
+			<if test="optionState != null">
+				option_state=#{optionState},
+			</if>
+		</set>
+		WHERE
+		id = #{id}
+	</update>
+
+	<update id="addNum" parameterType="Option">
+		UPDATE poll_option
+		<set>
+			<if test="optionNum != null">
+				option_num=option_num + #{optionNum},
+			</if>
+		</set>
+		WHERE
+		id = #{id}
+	</update>
+</mapper>
