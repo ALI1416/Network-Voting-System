@@ -8,7 +8,7 @@
 
 文档请看`网络投票系统SSM+MySQL.docx`
 
-jar包下载地址 https://www.lanzous.com/i4pgc7e
+jar包下载地址 https://www.lanzoui.com/i4pgc7e
 
 ## 项目链接
 [Github](https://github.com/ALI1416/Network-Voting-System)
