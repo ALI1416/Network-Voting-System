@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/github/license/ali1416/Network-Voting-System?label=License)](https://opensource.org/licenses/BSD-3-Clause)
 [![Java Support](https://img.shields.io/badge/Java-8+-green)](https://openjdk.org/)
-[![Repo Size](https://img.shields.io/github/repo-size/ali1416/Network-Voting-System?label=Repo%20Size&color=success)](https://github.com/ALI1416/Network-Voting-System)
+[![Repo Size](https://img.shields.io/github/repo-size/ali1416/Network-Voting-System?label=Repo%20Size&color=success)](https://github.com/ALI1416/Network-Voting-System/archive/refs/heads/master.zip)
 
 ## 简介
 
