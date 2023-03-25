@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ck.dao.RecordDao">
+
+	<sql id="col">user_id AS userId,option_id AS optionId,poll_num AS
+		pollNum,poll_date AS pollDate,poll_ip AS pollIp,poll_mac AS pollMac
+	</sql>
+
+	<select id="select" parameterType="Record" resultType="Record">
+		SELECT
+		<include refid="col" />
+		FROM
+		poll_record
+		<where>
+			<if test="userId != null">
+				and user_id = #{userId}
+			</if>
+			<if test="optionId != null">
+				and option_id = #{optionId}
+			</if>
+			<if test="optionNum != null">
+				and option_num = #{optionNum}
+			</if>
+			<!-- <if test="pollDate != null and pollDate != ''"> -->
+			<!-- <bind name="pollDate1" value="'%'+ pollDate +'%'" /> -->
+			<!-- and poll_date like #{pollDate1} -->
+			<!-- </if> -->
+			<if test="pollIp != null and pollIp != ''">
+				<bind name="pollIp1" value="'%'+ pollIp +'%'" />
+				and poll_ip like #{pollIp1}
+			</if>
+			<if test="pollMac != null and pollMac != ''">
+				<bind name="pollMac1" value="'%'+ pollMac +'%'" />
+				and poll_mac like #{pollMac1}
+			</if>
+		</where>
+	</select>
+
+	<select id="selectByUserId" parameterType="Integer" resultType="Record">
+		SELECT
+		<include refid="col" />
+		FROM
+		poll_record
+		WHERE
+		user_id = #{userId}
+	</select>
+
+	<select id="selectByOptionId" parameterType="Integer"
+		resultType="Record">
+		SELECT
+		<include refid="col" />
+		FROM
+		poll_record
+		WHERE
+		option_id = #{optionId}
+	</select>
+
+	<select id="selectById" parameterType="Integer" resultType="Record">
+		SELECT
+		<include refid="col" />
+		FROM
+		poll_record
+		WHERE
+		id = #{id}
+	</select>
+
+	<insert id="insert" parameterType="Record" keyProperty="id"
+		useGeneratedKeys="true">
+		INSERT poll_record (
+		user_id,
+		option_id,
+		poll_num,
+		poll_date,
+		poll_ip,
+		poll_mac
+		)VALUES(#{userId},#{optionId},#{pollNum},now(),#{pollIp},#{pollMac})
+	</insert>
+
+	<delete id="delete" parameterType="Integer">
+		DELETE
+		FROM
+		poll_record
+		WHERE
+		id =
+		#{id}
+	</delete>
+
+	<update id="update" parameterType="Record">
+		UPDATE poll_record
+		<set>
+			<if test="pollNum != null">
+				poll_num=#{pollNum},
+			</if>
+			<!-- <if test="pollDate != null and pollDate != ''"> -->
+			<!-- poll_date=#{pollDate}, -->
+			<!-- </if> -->
+			<if test="pollIp != null and pollIp != ''">
+				poll_ip=#{pollIp},
+			</if>
+			<if test="pollMac != null and pollMac != ''">
+				poll_mac=#{pollMac},
+			</if>
+		</set>
+		WHERE
+		id = #{id}
+	</update>
+</mapper>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<context id="context1">
+		<!-- 数据库信息 -->
+		<jdbcConnection connectionURL="jdbc:mysql://localhost/poll"
+			driverClass="com.mysql.jdbc.Driver" password="root" userId="root" />
+
+		<javaModelGenerator targetPackage="com.ck.po"
+			targetProject="Poll/src" />
+
+		<sqlMapGenerator targetPackage="com.ck.mapper"
+			targetProject="Poll/src" />
+
+		<javaClientGenerator targetPackage="com.ck.dao"
+			targetProject="Poll/src" type="XMLMAPPER" />
+
+		<!-- 生成表并且不生成example tableName:表名 domainObjectName:对象名 -->
+		<table tableName="user" domainObjectName="User"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+		</table>
+		<table tableName="post" domainObjectName="Post"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+		</table>
+		<table tableName="poll_option" domainObjectName="Option"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+		</table>
+		<table tableName="poll_record" domainObjectName="Record"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+		</table>
+
+	</context>
+</generatorConfiguration>
