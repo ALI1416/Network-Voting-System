@@ -1,8 +1,8 @@
 # Network-Voting-System 网络投票系统SSM+MySQL
 
-[![License](https://img.shields.io/github/license/ali1416/Network-Voting-System?label=License)](https://opensource.org/licenses/BSD-3-Clause)
+[![License](https://img.shields.io/github/license/ALI1416/Network-Voting-System?label=License)](https://opensource.org/licenses/BSD-3-Clause)
 [![Java Support](https://img.shields.io/badge/Java-8+-green)](https://openjdk.org/)
-[![Repo Size](https://img.shields.io/github/repo-size/ali1416/Network-Voting-System?label=Repo%20Size&color=success)](https://github.com/ALI1416/Network-Voting-System/archive/refs/heads/master.zip)
+[![Repo Size](https://img.shields.io/github/repo-size/ALI1416/Network-Voting-System?label=Repo%20Size&color=success)](https://github.com/ALI1416/Network-Voting-System/archive/refs/heads/master.zip)
 
 ## 简介
 
@@ -11,14 +11,11 @@
 - 文档请看`网络投票系统SSM+MySQL.docx`
 - jar包下载地址：<https://www.lanzoui.com/i4pgc7e>
 
-## 交流
+## 关于
 
-- [x] QQ：`1416978277`
-- [x] 微信：`1416978277`
-- [x] 支付宝：`1416978277@qq.com`
-
-![交流](https://cdn.jsdelivr.net/gh/ALI1416/ALI1416/image/contact.png)
-
-## 赞助
-
-![赞助](https://cdn.jsdelivr.net/gh/ALI1416/ALI1416/image/donate.png)
+<object data="https://404z.cn/images/about.svg" style="max-width:100%;">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://404z.cn/images/about.dark.svg">
+    <img alt="About" src="https://404z.cn/images/about.light.svg">
+  </picture>
+</object>
